@@ -54,6 +54,7 @@ const HeaderStyled = styled.div`
         .nav-item {
           color: #333333;
           transition: ease all 1s;
+          cursor: pointer;
           &:hover {
             font-size: 18px;
           }

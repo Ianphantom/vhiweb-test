@@ -29,6 +29,17 @@ const FooterStyled = styled.div`
       gap: 20px;
     }
   }
+
+  @media (max-width: 992px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      .left {
+        text-align: center;
+      }
+    }
+  }
 `;
 
 export default Footer;
