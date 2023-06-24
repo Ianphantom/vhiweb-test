@@ -1,15 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-
-// import Component
-import LoginInputContainer from "./LoginInputContainer";
-import ButtonComponent from "../../components/ButtonComponent";
+import { toast } from "react-toastify";
 
 // import AOS Style
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// import Component
+import LoginInputContainer from "./LoginInputContainer";
+import ButtonComponent from "../../components/ButtonComponent";
+
+// import function to handle user action
+import { handleChange } from "../../utils/formUtils";
+import { postData } from "../../utils/apiUtils";
+
+const defaultFormFields = {
+  email: "",
+  password: "",
+};
+
 const Login = () => {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+
+  const handleFormSubmit = async () => {
+    const response = await postData("https://reqres.in/api/login", formFields);
+    const { responseStatus, responseData } = response;
+    if (!responseStatus) {
+      toast.error(responseData.error, {
+        position: "top-right",
+        autoClose: 5000,
+        draggable: true,
+        theme: "colored",
+      });
+    }
+  };
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -25,14 +50,20 @@ const Login = () => {
           type='text'
           name='email'
           placeholder='Enter Your Email Address'
+          onChange={(e) => handleChange(e, formFields, setFormFields)}
         />
         <LoginInputContainer
           label={"Password"}
           type='password'
           name='password'
           placeholder='Enter Your Password'
+          onChange={(e) => handleChange(e, formFields, setFormFields)}
         />
-        <ButtonComponent className='btn btn-primary' label={"Login"} />
+        <ButtonComponent
+          className='btn btn-primary'
+          label={"Login"}
+          onClick={handleFormSubmit}
+        />
         <div className='register text-s13 text-w500'>
           No Account Yet? <span>Sign up Now!</span>
         </div>

@@ -1,5 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
+// toast component
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // import component
 import GlobalStyle from "./components/GlobalStyles";
 import Footer from "./components/Footer";
@@ -17,6 +21,7 @@ function App() {
         <Route path='/' element={<Login />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
