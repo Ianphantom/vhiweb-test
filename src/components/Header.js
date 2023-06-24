@@ -25,12 +25,12 @@ const Header = () => {
           </button>
           <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
             <div className='navbar-nav ml-auto'>
-              <Link className='nav-item nav-link text-w600 text-s16' to='/'>
+              <Link className='nav-item nav-link text-w600 text-s16' to='/user'>
                 User
               </Link>
               <Link
                 className='nav-item nav-link active text-w600 text-s16'
-                to='/service'
+                to='/'
               >
                 Login
               </Link>

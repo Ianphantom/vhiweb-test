@@ -29,12 +29,20 @@ const GlobalStyle = createGlobalStyle`
         line-height: 30px;
     }
 
+    .text-w400{
+        font-weight: 400;
+    }
+
     .text-w500{
         font-weight: 500;
     }
 
     .text-w600{
         font-weight: 600;
+    }
+
+    .text-w700{
+        font-weight: 700;
     }
 
     .text-w800{
