@@ -124,6 +124,16 @@ const LoginStyled = styled.div`
       width: 100%;
     }
   }
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    .right {
+      display: none;
+    }
+    .left {
+      width: 100%;
+    }
+  }
 `;
 
 export default Login;
