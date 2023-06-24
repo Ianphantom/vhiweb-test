@@ -1,3 +1,20 @@
+/**
+ * InputComponent is a reusable component for rendering a styled input field.
+ *
+ * @component
+ * @example
+ * return (
+ *   <InputComponent
+ *     type="text"
+ *     placeholder="Enter your name"
+ *     onChange={handleInputChange}
+ *   />
+ * )
+ *
+ * @param {...any} otherProps - Additional props to be spread onto the input element.
+ * @returns {JSX.Element} - The InputComponent JSX element.
+ */
+
 import styled from "styled-components";
 
 const InputComponent = ({ ...otherProps }) => {
