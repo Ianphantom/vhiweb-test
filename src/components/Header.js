@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // import images
 import brandImage from "../assets/images/brand-image.png";
@@ -9,8 +9,10 @@ import brandImage from "../assets/images/brand-image.png";
 import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { isAuth, setIsAuth, setCurrentUser } = useContext(AuthContext);
   const logUserOut = () => {
+    navigate("/");
     setIsAuth(false);
     setCurrentUser("");
     localStorage.removeItem("token");

@@ -13,6 +13,7 @@ import Header from "./components/Header";
 import Login from "./pages/login";
 import User from "./pages/user";
 import UserDetail from "./pages/userDetail";
+import ProtectedRoutes from "./utils/protectedRoutes";
 
 function App() {
   return (
@@ -21,8 +22,11 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/user' element={<User />} />
-        <Route path='/user/:id' element={<UserDetail />} />
+        <Route path='/user' element={<ProtectedRoutes component={User} />} />
+        <Route
+          path='/user/:id'
+          element={<ProtectedRoutes component={UserDetail} />}
+        />
       </Routes>
       <Footer />
       <ToastContainer />
