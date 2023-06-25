@@ -8,7 +8,8 @@ const statusData = ["Active", "Inactive"];
 export const columns = [
   {
     name: "ID No",
-    selector: ({ id }) => id,
+    selector: (row) => row.id,
+    sortable: true,
     style: {
       maxWidth: "min-content",
     },
@@ -16,7 +17,6 @@ export const columns = [
   },
   {
     name: "Employee",
-    sortable: true,
     selector: ({ row }) => row.first_name,
     cell: ({ avatar, first_name, last_name }) => (
       <ColumnEmployeeName avatar={avatar} first={first_name} last={last_name} />
@@ -30,9 +30,8 @@ export const columns = [
   },
   {
     name: "Status",
-    sortable: true,
-    selector: (row) => row.email,
-    cell: (row) => {
+    selector: (row) => row.status,
+    cell: () => {
       const id = Math.floor(Math.random() * 2);
       return (
         <TagComponent
