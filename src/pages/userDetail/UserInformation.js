@@ -1,13 +1,20 @@
+import { useEffect } from "react";
 import styled from "styled-components";
+
+// import aos
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // import icon
 import appleIcon from "../../assets/svg/apple-icon.svg";
 import spotifyIcon from "../../assets/svg/spotify-icon.svg";
-import designPodcast from "../../assets/images/design-podcast.png";
 
 const UserInformation = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <UserInformationStyled>
+    <UserInformationStyled data-aos='fade-left' data-aos-duration='1500'>
       <div className='cardContainer'>
         <div className='title text-s18 text-w700'>User Information</div>
         <div className='subtitle text-s16'>
@@ -15,15 +22,6 @@ const UserInformation = () => {
           veritatis, sed culpa officiis vel error? Nam temporibus iure tenetur
           atque quos consectetur saepe aliquam nostrum! Vel at soluta nostrum
           recusandae.
-        </div>
-        <div className='led-preview'>
-          <div>
-            <img src={designPodcast} alt='design-podcast-preview' />
-          </div>
-          <div>
-            <div className='name'>Ian Felix Jonathan</div>
-            <div className='position'>Podcast Designer</div>
-          </div>
         </div>
         <hr />
         <div className='follow'>
@@ -57,22 +55,6 @@ const UserInformationStyled = styled.div`
       margin-bottom: 25px;
       line-height: 25px;
     }
-    .led-preview {
-      padding: 40px 40px;
-      background: #535353;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      .name {
-        color: white;
-        font-size: 21px;
-        font-weight: 500;
-      }
-      .position {
-        color: rgba(255, 255, 255, 0.7);
-      }
-    }
 
     .follow {
       display: flex;
@@ -95,6 +77,17 @@ const UserInformationStyled = styled.div`
           background: #1ed760;
         }
       }
+    }
+  }
+
+  @media (max-width: 992px) {
+    margin-top: 5px;
+    margin-left: 0px;
+    .follow {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 5px;
     }
   }
 `;

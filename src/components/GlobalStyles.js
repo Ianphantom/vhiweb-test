@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
     }
 
+    .text-s13{
+        font-size: 14px;
+        line-height: 16px;
+    }
+
 
     .text-s14{
         font-size: 14px;

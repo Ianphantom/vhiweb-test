@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
-const UserSummary = () => {
+const UserSummary = ({ userDetail }) => {
   return (
     <UserSummaryStyled>
-      <div className='cardContainer'>
-        <img src='https://reqres.in/img/faces/1-image.jpg' alt='user-profile' />
-
-        <div className='username text-s18 text-w600'>David Schwarz</div>
-        <div className='username text-s14 text-w500'>ian25yola@gmail.com</div>
-        <div className='support text-s14'>
-          To keep ReqRes free, contributions towards server cost are appreciated
+      {userDetail.data && (
+        <div className='cardContainer'>
+          <div>
+            <img src={userDetail.data.avatar} alt='user-profile' />
+          </div>
+          <div>
+            <div className='username text-s18 text-w600'>{`${userDetail.data.first_name} ${userDetail.data.last_name}`}</div>
+            <div className='username text-s13 text-w500'>
+              {userDetail.data.email}
+            </div>
+            <div className='support text-s14'>{userDetail.support.text}</div>
+          </div>
         </div>
-      </div>
+      )}
     </UserSummaryStyled>
   );
 };
@@ -36,6 +41,28 @@ const UserSummaryStyled = styled.div`
     }
     .support {
       line-height: 20px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    margin-right: 0px;
+    .cardContainer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      img {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    margin-right: 0px;
+    .cardContainer {
+      display: block;
+      img {
+        margin-bottom: 20px;
+      }
     }
   }
 `;
