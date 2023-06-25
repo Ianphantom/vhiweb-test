@@ -15,6 +15,9 @@ const NotFoundStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  img {
+    max-width: 70%;
+  }
 `;
 
 export default NotFound;
