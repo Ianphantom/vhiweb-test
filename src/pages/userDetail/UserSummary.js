@@ -3,20 +3,18 @@ import styled from "styled-components";
 const UserSummary = ({ userDetail }) => {
   return (
     <UserSummaryStyled>
-      {userDetail.data && (
-        <div className='cardContainer'>
-          <div>
-            <img src={userDetail.data.avatar} alt='user-profile' />
-          </div>
-          <div>
-            <div className='username text-s18 text-w600'>{`${userDetail.data.first_name} ${userDetail.data.last_name}`}</div>
-            <div className='username text-s13 text-w500'>
-              {userDetail.data.email}
-            </div>
-            <div className='support text-s14'>{userDetail.support.text}</div>
-          </div>
+      <div className='cardContainer'>
+        <div>
+          <img src={userDetail.data.avatar} alt='user-profile' />
         </div>
-      )}
+        <div>
+          <div className='username text-s18 text-w600'>{`${userDetail.data.first_name} ${userDetail.data.last_name}`}</div>
+          <div className='username text-s13 text-w500'>
+            {userDetail.data.email}
+          </div>
+          <div className='support text-s14'>{userDetail.support.text}</div>
+        </div>
+      </div>
     </UserSummaryStyled>
   );
 };

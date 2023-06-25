@@ -31,14 +31,24 @@ const UserDetail = () => {
     <UserDetailStyled>
       <div className='container'>
         <BackComponent />
-        <div className='main'>
-          <div className='left-skeleton'>
-            <UserSummary userDetail={userDetail} />
+        {userDetail.data ? (
+          <div className='main'>
+            <div className='left-skeleton'>
+              <UserSummary userDetail={userDetail} />
+            </div>
+            <div className='right-skeleton'>
+              <UserInformation />
+            </div>
           </div>
-          <div className='right-skeleton'>
-            <UserInformation />
+        ) : (
+          <div className='userNotFound'>
+            <img
+              src='https://thumbs.gfycat.com/GrimyEthicalAsianpiedstarling-max-1mb.gif'
+              alt='not found'
+            />
+            <div className='text-s18 text-w600'>User Not Found</div>
           </div>
-        </div>
+        )}
       </div>
     </UserDetailStyled>
   );
@@ -55,6 +65,16 @@ const UserDetailStyled = styled.div`
     .right-skeleton {
       width: 75%;
       border-left: 1px solid rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .userNotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 40px;
+    img {
+      max-width: 70%;
     }
   }
 
