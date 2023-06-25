@@ -11,13 +11,18 @@ import { getData } from "../../utils/apiUtils";
 
 const UserListTable = () => {
   const [dataEmployee, setDataEmployee] = useState([]);
+  const [dataToShow, setDataToShow] = useState([]);
+  const [searchFilter, setSearchFilter] = useState("");
+
+  const inputHandler = (event) => {
+    setSearchFilter(event.target.value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getData(
-          "https://reqres.in/api/users?per_page=12"
-        );
+        const url = "https://reqres.in/api/users?per_page=12";
+        const response = await getData(url);
         setDataEmployee(response.data);
       } catch (error) {
         console.error("Error:", error);
@@ -26,6 +31,15 @@ const UserListTable = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const dataFilter = dataEmployee.filter(
+      (item) =>
+        item.first_name.toLowerCase().includes(searchFilter.toLowerCase()) ||
+        item.last_name.toLowerCase().includes(searchFilter.toLowerCase())
+    );
+    setDataToShow(dataFilter);
+  }, [searchFilter, dataEmployee]);
 
   return (
     <PerizinanContainer>
@@ -38,12 +52,13 @@ const UserListTable = () => {
           name='name'
           id='name'
           placeholder='Search your employee data'
+          onChange={inputHandler}
         />
       </div>
       <div className='title'>Your All Employee Data</div>
       <DataTable
         columns={columns}
-        data={dataEmployee}
+        data={dataToShow}
         pagination
         paginationPerPage={5}
       />
