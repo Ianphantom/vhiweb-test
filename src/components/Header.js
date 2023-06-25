@@ -1,10 +1,20 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // import images
 import brandImage from "../assets/images/brand-image.png";
 
+// import context
+import { AuthContext } from "../context/AuthContext";
+
 const Header = () => {
+  const { isAuth, setIsAuth, setCurrentUser } = useContext(AuthContext);
+  const logUserOut = () => {
+    setIsAuth(false);
+    setCurrentUser("");
+    localStorage.removeItem("token");
+  };
   return (
     <HeaderStyled>
       <div className='container'>
@@ -28,12 +38,21 @@ const Header = () => {
               <Link className='nav-item nav-link text-w600 text-s16' to='/user'>
                 User
               </Link>
-              <Link
-                className='nav-item nav-link active text-w600 text-s16'
-                to='/'
-              >
-                Login
-              </Link>
+              {!isAuth ? (
+                <Link
+                  className='nav-item nav-link active text-w600 text-s16'
+                  to='/'
+                >
+                  Login
+                </Link>
+              ) : (
+                <div
+                  className='nav-item nav-link active text-w600 text-s16'
+                  onClick={logUserOut}
+                >
+                  Log Out
+                </div>
+              )}
             </div>
           </div>
         </nav>

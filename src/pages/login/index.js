@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+
+// import context
+import { AuthContext } from "../../context/AuthContext";
 
 // import AOS Style
 import AOS from "aos";
@@ -20,6 +24,8 @@ const defaultFormFields = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { setIsAuth, setCurrentUser } = useContext(AuthContext);
   const [formFields, setFormFields] = useState(defaultFormFields);
 
   const handleFormSubmit = async () => {
@@ -32,7 +38,12 @@ const Login = () => {
         draggable: true,
         theme: "colored",
       });
+      return;
     }
+    localStorage.setItem("token", responseData.token);
+    setIsAuth(true);
+    setCurrentUser(responseData);
+    navigate("/user");
   };
 
   useEffect(() => {
