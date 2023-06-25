@@ -30,10 +30,10 @@ const ButtonStyled = styled.div`
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
-  border-radius: 6px;
   text-align: center;
   cursor: pointer;
   .buttons {
+    border-radius: 6px;
     padding: 14px 14px;
     width: 100%;
   }

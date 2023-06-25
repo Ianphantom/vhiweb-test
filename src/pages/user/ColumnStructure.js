@@ -1,5 +1,9 @@
 import ColumnDetail from "./ColumnDetail";
 import ColumnEmployeeName from "./ColumnEmployeeName";
+import TagComponent from "../../components/TagComponent";
+
+// data tambahan supaya tabel nya tidak terlalu kosong
+const statusData = ["Active", "Inactive"];
 
 export const columns = [
   {
@@ -23,6 +27,20 @@ export const columns = [
     sortable: true,
     selector: (row) => row.email,
     cell: ({ email }) => <div>{email}</div>,
+  },
+  {
+    name: "Status",
+    sortable: true,
+    selector: (row) => row.email,
+    cell: (row) => {
+      const id = Math.floor(Math.random() * 2);
+      return (
+        <TagComponent
+          label={statusData[id]}
+          className={id === 0 ? "tags-success" : "tags-warning"}
+        />
+      );
+    },
   },
   {
     name: "Detail",

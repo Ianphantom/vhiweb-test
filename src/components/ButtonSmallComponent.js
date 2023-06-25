@@ -27,16 +27,16 @@ const ButtonSmallComponent = ({ label, ...otherProps }) => {
 };
 
 const ButtonStyled = styled.div`
-  border-radius: 6px;
   font-weight: 400;
   font-size: 11.375px;
 
-  .button {
+  .buttons {
+    border-radius: 6px;
     padding: 4px 16px;
     width: 100%;
   }
 
-  .button-primary {
+  .buttons-primary {
     color: white;
     background: #3370ff;
   }

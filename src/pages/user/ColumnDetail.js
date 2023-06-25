@@ -4,7 +4,10 @@ import ButtonSmallComponent from "../../components/ButtonSmallComponent";
 const ColumnDetail = ({ id }) => {
   return (
     <Link to={`${id}`}>
-      <ButtonSmallComponent className='button button-primary' label={"View"} />
+      <ButtonSmallComponent
+        className='buttons buttons-primary'
+        label={"View"}
+      />
     </Link>
   );
 };

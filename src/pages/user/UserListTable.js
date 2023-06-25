@@ -35,8 +35,8 @@ const UserListTable = () => {
         </div>
         <input
           type='search'
-          name=''
-          id=''
+          name='name'
+          id='name'
           placeholder='Search your employee data'
         />
       </div>
