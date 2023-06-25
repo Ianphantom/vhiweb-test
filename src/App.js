@@ -14,6 +14,7 @@ import Login from "./pages/login";
 import User from "./pages/user";
 import UserDetail from "./pages/userDetail";
 import ProtectedRoutes from "./utils/protectedRoutes";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           path='/user/:id'
           element={<ProtectedRoutes component={UserDetail} />}
         />
+        <Route path=':any' element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />
