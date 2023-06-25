@@ -12,6 +12,7 @@ import Header from "./components/Header";
 // import pages
 import Login from "./pages/login";
 import User from "./pages/user";
+import UserDetail from "./pages/userDetail";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/user' element={<User />} />
+        <Route path='/user/:id' element={<UserDetail />} />
       </Routes>
       <Footer />
       <ToastContainer />

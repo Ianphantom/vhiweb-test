@@ -24,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
         line-height: 16px;
     }
 
+    .text-s18{
+        font-size: 18px;
+        line-height: 20px;
+    }
+
     .text-s24{
         font-size: 24px;
         line-height: 30px;
