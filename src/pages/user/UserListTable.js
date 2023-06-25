@@ -1,81 +1,52 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import ButtonSmallComponent from "../../components/ButtonSmallComponent";
 
-// import { ENDPOINT } from "../../utils/apiEndpoint";
+// import component
+import iconSearch from "../../assets/svg/icon-search.svg";
+import { columns } from "./ColumnStructure";
 
-const columns = [
-  {
-    name: "#",
-    selector: (row) => row.avatar,
-    style: {
-      maxWidth: "min-content",
-    },
-    cell: (row) => (
-      <ImageContainer className='userImage'>
-        <img src={row.avatar} alt='UserPreview' />
-      </ImageContainer>
-    ),
-  },
-  {
-    name: "Nama Lengkap",
-    sortable: true,
-    selector: (row) => row.namaLengkap,
-    cell: (row) => (
-      <div className='namaKlinik'>{`${row.first_name} ${row.last_name}`}</div>
-    ),
-  },
-  {
-    name: "Email",
-    sortable: true,
-    selector: (row) => row.email,
-    cell: (row) => <div className='namaKlinik'>{row.email}</div>,
-  },
-  {
-    name: "Detail",
-    button: true,
-    selector: (row) => row.id,
-    cell: (row) => {
-      return (
-        <Link to={`${row.uuid}`}>
-          <ButtonSmallComponent
-            className='button button-primary'
-            label={"View"}
-          />
-        </Link>
-      );
-    },
-  },
-];
+// import function
+import { getData } from "../../utils/apiUtils";
 
 const UserListTable = () => {
-  const [dataPerizinan, setDataPerizinan] = useState([]);
+  const [dataEmployee, setDataEmployee] = useState([]);
 
   useEffect(() => {
-    let myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      `Bearer ${localStorage.getItem("token")}`
-    );
-
-    let requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
+    const fetchData = async () => {
+      try {
+        const response = await getData(
+          "https://reqres.in/api/users?per_page=12"
+        );
+        setDataEmployee(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     };
 
-    fetch(`https://reqres.in/api/users?per_page=12`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        setDataPerizinan(result.data);
-      })
-      .catch((error) => console.log("error", error));
+    fetchData();
   }, []);
+
   return (
     <PerizinanContainer>
-      <DataTable columns={columns} data={dataPerizinan} pagination />
+      <div className='search-bar'>
+        <div className='icon-search'>
+          <img src={iconSearch} alt='icon-search' />
+        </div>
+        <input
+          type='search'
+          name=''
+          id=''
+          placeholder='Search your employee data'
+        />
+      </div>
+      <div className='title'>Your All Employee Data</div>
+      <DataTable
+        columns={columns}
+        data={dataEmployee}
+        pagination
+        paginationPerPage={5}
+      />
     </PerizinanContainer>
   );
 };
@@ -86,6 +57,27 @@ const PerizinanContainer = styled.div`
   background: white;
   border-radius: 8px;
   box-shadow: 0px 12px 24px rgba(18, 38, 63, 0.03);
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #eff2f7;
+    border-radius: 8px;
+    padding: 11px 16px;
+    margin-bottom: 20px;
+    input {
+      border: none;
+      width: 100%;
+      font-size: 14px;
+      line-height: 19px;
+      padding: 0px 5px;
+      color: #9a9a9a;
+      &:focus {
+        outline-color: white;
+      }
+    }
+  }
   .title {
     font-weight: 600;
     font-size: 16px;
@@ -127,14 +119,6 @@ const PerizinanContainer = styled.div`
 
   .rdt_Pagination {
     border-top: 1px solid #eff2f7;
-  }
-`;
-
-const ImageContainer = styled.div`
-  img {
-    height: 48px;
-    width: 48px;
-    border-radius: 50%;
   }
 `;
 

@@ -1,12 +1,16 @@
+import styled from "styled-components";
 import UserListTable from "./UserListTable";
 
 const User = () => {
   return (
-    <div className='container'>
-      <div>Ini User</div>
+    <UserStyled className='container'>
       <UserListTable />
-    </div>
+    </UserStyled>
   );
 };
+
+const UserStyled = styled.div`
+  padding: 40px 0px;
+`;
 
 export default User;
