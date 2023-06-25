@@ -11,6 +11,7 @@ import Header from "./components/Header";
 
 // import pages
 import Login from "./pages/login";
+import User from "./pages/user";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Login />} />
+        <Route path='/user' element={<User />} />
       </Routes>
       <Footer />
       <ToastContainer />

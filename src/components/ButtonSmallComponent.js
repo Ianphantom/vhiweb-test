@@ -1,5 +1,5 @@
 /**
- * ButtonComponent is a reusable component for rendering a styled button.
+ * ButtonSmallComponent is a reusable component for rendering a styled small button.
  *
  * @component
  * @example
@@ -18,7 +18,7 @@
 
 import styled from "styled-components";
 
-const ButtonComponent = ({ label, ...otherProps }) => {
+const ButtonSmallComponent = ({ label, ...otherProps }) => {
   return (
     <ButtonStyled>
       <div {...otherProps}>{label}</div>
@@ -27,21 +27,19 @@ const ButtonComponent = ({ label, ...otherProps }) => {
 };
 
 const ButtonStyled = styled.div`
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
   border-radius: 6px;
-  text-align: center;
-  cursor: pointer;
-  .buttons {
-    padding: 14px 14px;
+  font-weight: 400;
+  font-size: 11.375px;
+
+  .button {
+    padding: 4px 16px;
     width: 100%;
   }
 
-  .buttons-primary {
+  .button-primary {
     color: white;
     background: #3370ff;
   }
 `;
 
-export default ButtonComponent;
+export default ButtonSmallComponent;

@@ -60,7 +60,7 @@ const Login = () => {
           onChange={(e) => handleChange(e, formFields, setFormFields)}
         />
         <ButtonComponent
-          className='btn btn-primary'
+          className='buttons buttons-primary'
           label={"Login"}
           onClick={handleFormSubmit}
         />
