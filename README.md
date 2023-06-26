@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# VhiWEB Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dokumentasi ini akan memberikan panduan tentang proyek technical test dari VhiWEB yang dibangun dengan menggunakan ReactJS
 
-## Available Scripts
+## Prasyarat
 
-In the project directory, you can run:
+Sebelum memulai, pastikan Anda telah menginstal beberapa prasyarat berikut:
 
-### `npm start`
+- Node.js: Pastikan Anda telah menginstal Node.js, versi 12 atau yang lebih baru.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Instalasi
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Berikut adalah langkah-langkah untuk menjalankan proyek menggunakan ReactJS
 
-### `npm test`
+```bash
+# Clone repositori
+git clone https://github.com/nama-akun/repo-proyek.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Pindah ke direktori proyek
+cd repo-proyek
 
-### `npm run build`
+# Instal dependensi
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Menjalankan proyek
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Penggunaan
 
-### `npm run eject`
+Berikut merupakan tampilan halaman yang dibuat dalam project VhiWEB ini.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Login
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pada halaman login, user dapat melakukan login dengan credential sebagai berikut ini:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- email : eve.holt@reqres.in
+- password : cityslicka
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Jika user menekan tombol login tanpa memasukkan credential dan user tidak memasukkan password atau username maka akan muncul pop up error disebelah kanan atas
 
-## Learn More
+![image](https://github.com/Ianphantom/vhiweb-test/assets/50267676/d7ad60db-948b-4437-b78b-95ea142bd9fd)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### UserList
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+halaman userlist hanya bisa diakses jika user sudah login. Secara default jika user mengakses tanpa login maka sistem akan mengembalikan halaman login kepada user. Ada beberapa hal yang dapat kamu lakukan pada halaman ini
 
-### Code Splitting
+- Kamu dapat mencari nama karyawan baik dengan menggunakan nama depan ataupun dengan nama belakang pada bagian search.
+- Kamu dapat melakukan sorting pada tabel berdasarkan column header yang ada. Sorting dapat dilakukan secara acending ataupun decending.
+- Kamu dapat melihat detail dari setiap user dengan menekan tombol view pada bagian sebelah kanan setiap baris
+- Secara default, jumlah karyawan yang ditampilkan perhalaman adalah 5 orang. Kamu bisa mengatur jumlah tampilan perhalaman pada bagian bawah
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![image](https://github.com/Ianphantom/vhiweb-test/assets/50267676/5783eea6-f146-4993-a456-44b548e20f63)
 
-### Analyzing the Bundle Size
+#### UserDetail
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Halaman userdetail menyediakan informasi detail dari setiap user. Secara default jika user mengakses tanpa login maka sistem akan mengembalikan halaman login kepada user.
 
-### Making a Progressive Web App
+- Jika kamu memasukkan id user secara sembarang, maka halaman akan mengembalikan nilai bahwa user tersebut tidak ditemukan
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![image](https://github.com/Ianphantom/vhiweb-test/assets/50267676/0cc74287-68e5-415f-a2e0-1b3245eab64e)
 
-### Advanced Configuration
+#### 404 Not Found
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Halaman ini akan dikembalikan kepada user jika user memasukkan endpoint atau routing yang tidak ditetapkan sebelumnya
 
-### Deployment
+![image](https://github.com/Ianphantom/vhiweb-test/assets/50267676/5bf1b0e1-a0ff-4d23-ac25-049a5f901736)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Struktur Direktori
 
-### `npm run build` fails to minify
+```
+.
+├── App.js
+├── App.test.js
+├── index.js
+├── reportWebVitals.js
+├── setupTests.js
+├── assets
+│   ├── images
+│   │   ├── brand-image.png
+│   │   └── design-podcast.png
+│   └── svg
+│       ├── apple-icon.svg
+│       ├── icon-back.svg
+│       ├── icon-search.svg
+│       └── spotify-icon.svg
+├── components
+│   ├── ButtonComponent.js
+│   ├── ButtonSmallComponent.js
+│   ├── Footer.js
+│   ├── FormInputComponent.js
+│   ├── GlobalStyles.js
+│   ├── Header.js
+│   ├── InputComponent.js
+│   └── TagComponent.js
+├── context
+│   └── AuthContext.js
+├── pages
+│   ├── login
+│   │   ├── index.js
+│   │   └── LoginInputContainer.js
+│   ├── NotFound
+│   │   └── index.js
+│   ├── user
+│   │   ├── ColumnDetail.js
+│   │   ├── ColumnEmployeeName.js
+│   │   ├── ColumnStructure.js
+│   │   ├── index.js
+│   │   └── UserListTable.js
+│   └── userDetail
+│       ├── BackComponent.js
+│       ├── index.js
+│       ├── UserInformation.js
+│       └── UserSummary.js
+└── utils
+    ├── apiUtils.js
+    ├── formUtils.js
+    └── protectedRoutes.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+
+- **/component**: berisi komponen komponen yang dapat digunakan berulang secara global
+- **/context**: berisi kode kode tentang context yang dibuat
+- **/pages/nama_halaman**: index.js akan menjadi file utama yang menampilkan halaman tersebut. Di dalam folder itu juga terdapat komponen komponen yang hanya digunakan pada halaman tersebut
+- **/utils**: berisi kode kode yang dapat membantu mempercepat proses koding. Bagaimana fungsi tersebut digunakan dapat dilihat pada dokumentasi setiap fungsi pada dokumen yang dibuat.
