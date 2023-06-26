@@ -22,13 +22,17 @@ function App() {
       <GlobalStyle />
       <Header />
       <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/user' element={<ProtectedRoutes component={User} />} />
+        <Route exact path='/' element={<Login />} />
+        <Route
+          exact
+          path='/user'
+          element={<ProtectedRoutes component={User} />}
+        />
         <Route
           path='/user/:id'
           element={<ProtectedRoutes component={UserDetail} />}
         />
-        <Route path=':any' element={<NotFound />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />
